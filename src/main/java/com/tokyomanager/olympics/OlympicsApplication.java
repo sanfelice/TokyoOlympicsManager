@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class OlympicsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OlympicsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(OlympicsApplication.class, args);
+    }
 }
