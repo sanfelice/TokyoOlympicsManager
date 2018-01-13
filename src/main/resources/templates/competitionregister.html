@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Listagem de competições utilizando o Spring Boot</title>
+        
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+            rel="stylesheet" />
+        
+        <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+            rel="stylesheet" />
+        
+        <link th:href="@{/webjars/font-awesome/css/font-awesome.min.css}"
+            rel="stylesheet" />
+        
+        <link th:href="@{/css/style.css}" rel="stylesheet" />
+        <link th:href="@{/webjars/bootstrap/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" />
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span> <span
+                            class="icon-bar"></span>
+                    </button>
+    
+                    <a class="navbar-brand" th:href="@{/competition/list}">Listar Competições</a>
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span> <span
+                            class="icon-bar"></span>
+                    </button>
+    
+                    <a class="navbar-brand" th:href="@{/competition/register}">Cadastrar Competições</a>
+                </div>
+            </div>
+        </nav>
+    
+        <div class="container">
+            <div class="page-header">
+                <h1>Cadastro de Competições</h1>
+            </div>
+            
+            <form  action="#" th:action="@{/competition/register}" th:object="${competition}" method="post">
+                <div class="form-group">
+                    <label for="id_sport">Selecione a modalidade</label>
+                    <select class="form-control" id="id_sport" name="id_sport" th:field="*{sport}">
+                        <option th:each="sport : ${sports}" th:value="${sport.id}" th:text="${sport.description}"></option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_site">Selecione o local</label>
+
+                    <select class="form-control" id="id_site" name="id_site" th:field="*{site}" >
+                        <option th:each="site : ${sites}" th:value="${site.id}" th:text="${site.description}"></option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_stage">Selecione a etapa</label>
+
+                    <select class="form-control" id="id_stage" name="id_stage" th:field="*{stage}">
+                        <option th:each="stage : ${stages}" th:value="${stage.id}" th:text="${stage.description}"></option>
+                    </select>
+                </div>
+                        
+                <div class="form-group">
+                    <label for="id_country1">Selecione o competidor 1</label>
+
+                    <select class="form-control" id="id_country1" name="id_country1" th:field="*{country1}">
+                        <option th:each="country : ${countries}" th:value="${country.id}" th:text="${country.description}"></option>
+                    </select>
+                </div>
+                
+                 <div class="form-group">
+                    <label for="id_country2">Selecione o competidor 1</label>
+
+                    <select class="form-control" id="id_country2" name="id_country2" th:field="*{country2}">
+                        <option th:each="country : ${countries}" th:value="${country.id}" th:text="${country.description}"></option>
+                    </select>
+                </div>
+                
+                <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+            </form>
+        </div>
+    
+    
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        
+        <link th:src="@{/webjars/bootstrap/js/bootstrap-datetimepicker.min.js}"/>
+        
+        <script type="text/javascript">
+            /*$(function () {
+                $('#datetimepicker2').datetimepicker({
+                    locale: 'pt-BR'
+                });
+            });*/
+        </script>
+    </body>
+</html>

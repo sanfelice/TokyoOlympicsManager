@@ -28,12 +28,22 @@
     
                     <a class="navbar-brand" th:href="@{/competition/list}">Listar Competições</a>
                 </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span> <span
+                            class="icon-bar"></span>
+                    </button>
+    
+                    <a class="navbar-brand" th:href="@{/competition/register}">Cadastrar Competições</a>
+                </div>
             </div>
         </nav>
     
         <div class="container">
             <div class="page-header">
-                <h1>Lista de contatos</h1>
+                <h1>Lista de Competições</h1>
             </div>
             
             <table class="table table-striped table-bordered">
@@ -42,14 +52,24 @@
                         <th>#</th>
                         <th>Modalidade</th>
                         <th>Estadio</th>
+                        <th>Data/Hora Início</th>
+                        <th>Data/Hora Término</th>
+                        <th>Etapa</th>
+                        <th>Competidor 1</th>
+                        <th>Competidor 2</th>
                     </tr>
                 </thead>
                 
                 <tbody>
                     <tr th:each="competition: ${competitions}">
                         <td th:text="${competition.id}"></td>
-                        <td th:text="${competition.modalidade}"></td>
-                        <td th:text="${competition.estadio}"></td>
+                        <td th:text="${competition.sport.getDescription()}"></td>
+                        <td th:text="${competition.site.getDescription()}"></td>
+                        <td th:text="${competition.dateTimeStart}"></td>
+                        <td th:text="${competition.dateTimeEnd}"></td>
+                        <td th:text="${competition.stage.getDescription()}"></td>
+                        <td th:text="${competition.country1.getDescription()}"></td>
+                        <td th:text="${competition.country2.getDescription()}"></td>
                     </tr>
                 </tbody>
             </table>
